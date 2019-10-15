@@ -1,0 +1,13 @@
+.example-card {
+    padding-bottom: 100px;
+    border-radius: 0px;
+  }
+    
+  .no-margin {
+    margin-left: -20px;
+  }
+  
+  .mat-card-header-text {
+    margin: 0 16px;
+    border: 2px solid green;
+  }

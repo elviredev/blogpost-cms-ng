@@ -1,0 +1,31 @@
+<mat-card *ngIf="authService.isCreated">
+    <form #loginForm="ngForm" (submit)="login()">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput type="text" placeholder="user name" name="username" id="username" [(ngModel)]="user.username" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="password" name="password" id="password" [(ngModel)]="user.password" required>
+            </mat-form-field>
+            <button mat-button type="submit" [disabled]="!loginForm.form.valid">sign in</button>
+            
+        </div>
+    </form>
+</mat-card>
+
+<mat-card *ngIf="!authService.isCreated">
+    <form #registerForm="ngForm" (submit)="register()">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput type="text" placeholder="user name" name="usernameSignup" id="usernameSignup" [(ngModel)]="user.username" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="password" name="passwordSignup" id="passwordSignup" [(ngModel)]="user.password" required>
+            </mat-form-field>
+            <button mat-button type="submit" [disabled]="!registerForm.form.valid">sign up</button>
+            
+        </div>
+    </form>
+</mat-card>
+
+

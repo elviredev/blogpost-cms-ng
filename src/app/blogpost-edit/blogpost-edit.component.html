@@ -1,0 +1,22 @@
+<mat-card *ngIf="blogpost as bp; else loading">
+    <form #formDirective="ngForm" (submit)="updateBlogpost(formDirective)">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="title" [(ngModel)]="bp.title" name="title" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="sub-title" [(ngModel)]="bp.subTitle" name="subTitle" required>
+            </mat-form-field>
+            <app-ngx-editor [placeholder]="'enter text here...'" [spellcheck]="true" [(ngModel)]="bp.content" name="content"></app-ngx-editor>
+            <label for="image">choose image</label>
+            <input type="file" name="image" id="image" >
+            <button mat-stroked-button color="accent" type="button" (clic)="upload()">upload image</button>
+            <button mat-stroked-button color="primary" type="submit" [disabled]="!formDirective.form.valid">update blog post</button>
+        </div>
+    </form>
+</mat-card>
+
+<ng-template #loading>
+    loading ...
+</ng-template>
+

@@ -1,0 +1,22 @@
+<mat-card>
+    <button mat-stroked-button color="warn" (click)="logout()">logout</button>
+    {{ errorFromServer }}
+</mat-card>
+
+<mat-selection-list #blogposts>
+    <mat-list-option *ngFor="let bp of allBlogposts" [value]="bp._id">
+        <a [routerLink]="['/admin/blog-posts', bp._id]">{{bp.title}}</a>
+    </mat-list-option>
+</mat-selection-list>
+    
+<mat-card>Blog posts selected: {{blogposts.selectedOptions.selected.length}}</mat-card>
+<mat-card>
+    <mat-card-actions>
+        <button mat-stroked-button color="warn"
+        (click)="deleteBlogposts(blogposts.selectedOptions.selected)"
+        *ngIf="blogposts.selectedOptions.selected.length > 0"
+        >delete</button>
+    </mat-card-actions>
+</mat-card>
+
+<app-blogpost-create></app-blogpost-create>
